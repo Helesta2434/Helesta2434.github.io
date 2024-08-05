@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lize Helesta</title>
+    <link rel="icon" href="images/Button-01.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="images/Button-01.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+            background-image: url('images/D5.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            scroll-padding-top: 100px;
+        }
+
+        header {
+     background-image: url('images/long_.png'); */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    padding: 15px 0; /* เพิ่มความสูง header 15px ทั้งบนและล่าง */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex; /* ใช้ flexbox จัดตำแหน่ง */
+    justify-content: center; /* จัดให้ภาพอยู่กึ่งกลางตามแนวนอน */
+    align-items: center; /* จัดให้ภาพอยู่กึ่งกลางตามแนวตั้ง */
+    height: 30px; /* กำหนดความสูงให้ header */
+}
+
+header img {
+    max-width: 200px; /* กำหนดความกว้างคงที่ */
+    max-height: 100px; /* กำหนดความสูงคงที่ */
+    width: 100px; /* ระบุความกว้างของภาพ */
+    height: 100px; /* ระบุความสูงของภาพ */
+    display: block; /* ลดพื้นที่ด้านใน */
+    margin: 0; /* เอา margin ออก */
+    transition: transform 0.3s ease, filter 0.3s ease; /* เพิ่ม Transition นุ่มนวล */
+}
+
+
+/* การเปลี่ยนภาพเมื่อเมาส์ไปชี้ */
+header img:hover {
+    content: url('images/Logo Name 2_.png'); /* เปลี่ยนเป็นภาพอื่น */
+    transform: scale(1.1); /* ขยายขนาดเล็กน้อย */
+}
+
+/* การเปลี่ยนภาพเมื่อคลิก */
+header img:active {
+    content: url('images/Logo Name 1_.png'); /* เปลี่ยนเป็นภาพที่สาม */
+    filter: brightness(0.8); /* ลดความสว่าง */
+}
+
+
+header img {
+    max-height: 100%; /* ปรับความสูงของภาพให้เท่ากับ header */
+    height: auto; /* ให้ภาพปรับความสูงอัตโนมัติ */
+    width: auto; /* ให้ภาพปรับความกว้างอัตโนมัติ */
+    display: block; /* ลดพื้นที่ด้านใน */
+    margin: 0; /* เอา margin ออก */
+}
+
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-family: 'Jost', sans-serif;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        nav {
+            background-color: #333;
+            position: fixed;
+            top: 60px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        nav a:hover {
+            color: #1e90ff;
+        }
+
+        .section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+            transition: background-color 0.5s ease;
+        }
+
+        .vtuber-card {
+            width: 100%;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+        }
+
+        .section.in-view .vtuber-card {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .vtuber-card img {
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .vtuber-info {
+            flex: 1;
+        }
+
+        .vtuber-info h2 {
+            margin: 0;
+            font-size: 28px;
+            color: #333;
+            font-family: 'Jost', sans-serif;
+        }
+
+        .vtuber-info p {
+            margin: 10px 0;
+            color: #555;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .vtuber-info .social-links a {
+            text-decoration: none;
+            color: #1e90ff;
+            margin-right: 10px;
+            font-weight: 600;
+        }
+
+        .vtuber-info .social-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Design for Profile section */
+        #vtuber1 .vtuber-card {
+    background-image: url('images/D3_.png');
+    border-left: 10px solid #1e90ff;
+    max-width: 700px;
+    background-size: cover; /* ให้ภาพพอดีกับ container */
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 400px; /* กำหนดความสูงตามความต้องการ */
+}
+
+
+
+
+        /* Design for Personality section */
+        #vtuber2 .vtuber-card {
+            background-image: url('images/2_.png');
+            border-left: 10px solid #32cd32;
+            max-width: 600px; /* ปรับขนาดการ์ดให้เล็กลง */
+            margin: 30px auto; /* Center the card horizontally with margin */
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow for better visibility */
+            border-radius: 15px; /* Rounded corners */
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            align-items: center;
+            text-align: center;
+        }
+
+        #vtuber2 .vtuber-card img {
+            border-radius: 50%;
+            width: 150px; /* Adjust size as needed */
+            height: 150px; /* Adjust size as needed */
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Shadow for image */
+            margin-bottom: 20px; /* Space between image and text */
+        }
+
+        #vtuber2 .vtuber-info {
+            flex: 1;
+        }
+
+        #vtuber2 .vtuber-info h2 {
+            font-size: 28px; /* Adjusted font size */
+            color: #333;
+            margin-bottom: 15px; /* Space below the heading */
+            font-family: 'Jost', sans-serif; /* Matching font for consistency */
+        }
+
+        #vtuber2 .vtuber-info p {
+            font-size: 16px; /* Adjusted font size */
+            line-height: 1.8; /* Better line spacing */
+            color: #555;
+            margin-bottom: 15px; /* Space between paragraphs */
+        }
+
+        #vtuber3 .vtuber-card {
+            background-image: url('images/3_.png'); /* สีพื้นหลังของการ์ด */
+    border-left: 10px solid #ff69b4; /* ขอบด้านซ้ายของการ์ด */
+    border-radius: 10px; /* มุมโค้งของการ์ด */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* เงาของการ์ด */
+    overflow: hidden; /* ซ่อนส่วนที่ล้นออกมาจากการ์ด */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* เพิ่มความลื่นไหลในการเปลี่ยนแปลง */
+    max-width: 600px; /* ความกว้างสูงสุดของการ์ด */
+    display: flex;
+    flex-direction: column; /* การจัดเรียงแบบคอลัมน์ */
+}
+
+#vtuber3 .vtuber-card:hover {
+    transform: scale(1.05); /* ขยายขนาดการ์ดเมื่อเมาส์ชี้ไปที่การ์ด */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* เพิ่มเงาเมื่อเมาส์ชี้ไปที่การ์ด */
+}
+
+#vtuber3 .vtuber-info {
+    padding: 15px;
+    text-align: center;
+     /* พื้นหลังของข้อความ */
+}
+
+#vtuber3 .vtuber-info h2 {
+    margin-top: 0;
+    color: #ff69b4; /* สีของหัวเรื่อง */
+}
+
+#vtuber3 .vtuber-info p {
+    color: #333; /* สีของข้อความ */
+}
+
+#vtuber3 .vtuber-image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 คอลัมน์ */
+    gap: 10px; /* ระยะห่างระหว่างรูปภาพ */
+    margin-top: 10px; /* ระยะห่างด้านบน */
+}
+
+#vtuber3 .vtuber-image-grid img {
+    width: 100%; /* ให้รูปภาพมีความกว้างเต็มพื้นที่ในแต่ละเซลล์ของ Grid */
+    height: 200px; /* กำหนดความสูงของรูปภาพให้เป็น 200px */
+    object-fit: cover; /* ทำให้รูปภาพครอบคลุมเซลล์โดยรักษาสัดส่วน */
+    display: block; /* ให้รูปภาพแสดงเป็นบล็อก */
+    border-radius: 0; /* ลบมุมโค้งให้รูปภาพเป็นรูปสี่เหลี่ยม */
+}
+
+
+        #vtuber4 .vtuber-card {
+            background-image: url('images/1_.png'); /* สีพื้นหลังที่อ่อนเพื่อทำให้ข้อความเด่นขึ้น */
+    border-left: 10px solid #ffd700; /* สีที่เป็นเอกลักษณ์สำหรับหมวดหมู่นี้ */
+    max-width: 1000px; /* ขยายขนาดการ์ดเพื่อให้ข้อมูลมากขึ้น */
+    margin: 30px auto; /* Center the card horizontally */
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Shadow for better visibility */
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Align items to the center */
+    justify-content: center; /* Align items vertically in the center */
+    gap: 20px; /* Space between image and text */
+}
+
+#vtuber4 .vtuber-card img {
+    border-radius: 15px; /* โค้งมุมภาพเพื่อให้เข้ากับการ์ด */
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for image */
+    margin: 0 auto; /* Center image horizontally */
+}
+
+        #vtuber4 .vtuber-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #vtuber4 .vtuber-info h2 {
+            font-size: 32px; /* ขนาดตัวอักษรใหญ่ขึ้นสำหรับหัวข้อ */
+            color: #333;
+            margin-bottom: 15px; /* ระยะห่างระหว่างหัวข้อและข้อความ */
+            font-family: 'Jost', sans-serif;
+        }
+
+        #vtuber4 .vtuber-info p {
+            font-size: 18px; /* ขนาดตัวอักษรที่เหมาะสม */
+            line-height: 1.8;
+            color: #555;
+            text-align: justify;
+        }
+
+        #vtuber4 .vtuber-info .history-section {
+            display: none; /* ซ่อนเนื้อหาแต่ละพาร์ทในเริ่มต้น */
+            padding: 15px;
+            background-color: #ffffff; /* พื้นหลังขาวสำหรับแต่ละพาร์ท */
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #vtuber4 .vtuber-info .history-section.active {
+            display: block; /* แสดงเนื้อหาพาร์ทที่เลือก */
+        }
+
+        #vtuber4 .vtuber-info .history-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        #vtuber4 .vtuber-info .history-buttons button {
+            padding: 8px 12px;
+            font-size: 16px;
+            background-color: #ffd700;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            color: #333;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #vtuber4 .vtuber-info .history-buttons button:hover {
+            background-color: #ffcc00; /* สีเมื่อโฮเวอร์ */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .vtuber-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .vtuber-card img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .vtuber-info h2 {
+                font-size: 24px;
+            }
+
+            .vtuber-info p {
+                font-size: 14px;
+            }
+
+            nav a {
+                font-size: 14px;
+            }
+        }
+        .history-section {
+    opacity: 0;
+    transform: translateY(20px); /* เริ่มต้นที่อยู่ด้านล่าง */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* การเคลื่อนไหวเมื่อแสดง */
+}
+
+.history-section.active {
+    opacity: 1;
+    transform: translateY(0); /* ขยับขึ้นมาที่ตำแหน่งเดิม */
+}
+.gender-info {
+    background-color: white; /* กำหนดสีพื้นหลังเป็นสีเงิน */
+    padding: 5px; /* เพิ่มพื้นที่ด้านใน */
+    border-radius: 5px; /* ทำให้มุมของพื้นหลังมน */
+    color: #333; /* กำหนดสีของข้อความ */
+    font-weight: bold; /* ทำให้ข้อความหนา */
+    display: inline-block; /* ทำให้พื้นที่ครอบคลุมเฉพาะข้อความ */
+}
+.social-links i {
+    transition: all 0.3s ease; /* ทำให้การเปลี่ยนแปลงมีความลื่นไหล */
+            font-size: 40px; /* ขนาดเริ่มต้นของไอคอน */
+        }
+        .social-links .fa-youtube:hover {
+            color: #FF0000; /* สีของไอคอน YouTube เมื่อเมาส์ชี้ไปที่ไอคอน */
+            transform: scale(1.2); /* ขยายขนาดของไอคอน YouTube เมื่อเมาส์ชี้ไปที่ไอคอน */
+        }
+
+        .social-links .fa-square-x-twitter:hover {
+            color: #000000; /* สีของไอคอน Twitter เมื่อเมาส์ชี้ไปที่ไอคอน */
+            transform: scale(1.2); /* ขยายขนาดของไอคอน Twitter เมื่อเมาส์ชี้ไปที่ไอคอน */
+        }
+        .navigation-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.navigation-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.navigation-buttons button {
+    background-color: #ff69b4;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.navigation-buttons button:hover {
+    background-color: #ff1493;
+}
+
+/* Hide buttons by default, they'll be shown conditionally */
+.navigation-buttons button.hidden {
+    display: none;
+}
+.vtuber-image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px; /* ช่องว่างระหว่างรูปภาพ */
+}
+
+.vtuber-image-grid img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* การเปลี่ยนแปลงแบบลื่นไหล */
+}
+
+.vtuber-image-grid img:hover {
+    transform: scale(1.1); /* ขยายขนาดรูปภาพ */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* เพิ่มเงา */
+}
+    </style>
+</head>
+<body>
+    <header>
+    <a href=""><img src="images/Logo Name 1_.png" alt="Vtuber Image" width="100" height="100"></a>
+    </header>
+    <nav>
+        <a href="#vtuber1">Basic Details</a>
+        <a href="#vtuber2">Profile</a>
+        <a href="#vtuber4">History</a>
+        <a href="#vtuber3">Gallery</a>
+    </nav>
+
+    <section id="vtuber1" class="section">
+        <div class="vtuber-card">
+            <img src="images/lize.jpg" alt="Vtuber Image" width="200" height="200">
+            <div class="vtuber-info">
+                <h2 class="gender-info">Lize Helesta</h2><br>
+                <p class="gender-info">Debut Date
+                YouTube: 2019/03/23</p>
+                <p class="social-links gender-info">
+    Character Designer: 
+    <br> Illustration: <a href="https://x.com/fuzichoco" target="_blank" title="Visit fuzichoco's page">fuzichoco</a><a href="https://x.com/usasuzu22" target="_blank" title="Visit usasuzu's page">usasuzu</a>
+</p>
+<p class="gender-info">Gender: Female</p>
+<p class="gender-info">Age: 17</p>
+<p class="gender-info">Height: 158 cm (166 cm including Sebas)</p>
+<p class="gender-info">Weight: Unknown</p>
+<p class="gender-info">Blood Type: B</p>
+<p class="gender-info">Zodiac Sign: Gemini</p>
+<p class="gender-info">Emoji: 👑</p>
+                <div class="social-links">
+                <a href="https://www.youtube.com/channel/UCZ1xuCK1kNmn5RzPYIZop3w" target="_blank" ><i class="fa-brands fa-youtube fa-2x"></i></a>
+                <a href="https://x.com/Lize_Helesta" target="_blank"><i class="fa-brands fa-square-x-twitter fa-2x"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="vtuber2" class="section">
+        <div class="vtuber-card">
+            <img src="images/lize01.jpg" alt="Vtuber Image" width="150" height="150">
+            <div class="vtuber-info">
+                <h2 class="gender-info">Proflie</h2>
+                <p class="gender-info">The second princess of Helesta Kingdom.
+The school president who excels in both military and literary arts, she is diligent and kind to everyone which makes her liked by many.
+Being qualified to be the heir to the throne, she values daily training and communication with others</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="vtuber3" class="section">
+    <div class="vtuber-gallery">
+        <div class="vtuber-card">
+            <div class="vtuber-info">
+                <h2 class="gender-info">Lize Helesta Gallery</h2>
+            </div>
+            <div class="vtuber-image-grid" id="imageGrid">
+                <!-- รูปภาพจะถูกแทรกที่นี่โดย JavaScript -->
+            </div>
+            <div class="navigation-buttons">
+        <button id="prevButton" onclick="changePage(-1)">&lt; Previous</button>
+        <button id="nextButton" onclick="changePage(1)">Next &gt;</button>
+    </div>
+        </div>
+    </div>
+</section>
+
+
+
+    <section id="vtuber4" class="section">
+        <div class="vtuber-card">
+            <img src="images/Gellery18_.jpg" alt="Vtuber Image" width="150" height="150">
+            <div class="vtuber-info">
+                <h2 class="gender-info">History</h2>
+                <div class="history-buttons">
+                    <button onclick="showHistorySection(0)">Background</button>
+                    <button onclick="showHistorySection(1)">2019</button>
+                    <button onclick="showHistorySection(2)">2020</button>
+                    <button onclick="showHistorySection(3)">2021</button>
+                    <button onclick="showHistorySection(4)">2022</button>
+                </div>
+                <div class="history-section active" id="history-section-0">
+                <p><strong>Background:</strong></p>
+            <ul>
+            <p>On 23 March 2019, Lize Helesta debuted together with Ange Katrina and Inui Toko as part of the Sanbaka. On the same day, she reached 10,000 subscribers on her YouTube channel.<p>
+            </ul>
+                </div>
+                <div class="history-section" id="history-section-1">
+                <p><strong>2019:</strong></p>
+            <ul>
+                <p>On 29 April, Lize reached 50,000 subscribers on her YouTube channel.</p>
+                <p>On 8 July, Lize reached 100,000 subscribers on her YouTube channel.</p>
+                <p>On 20 August, she unveiled her summer outfit model.</p>
+                <p>On 23 September, Lize reached 150,000 subscribers on her YouTube channel.</p>
+                <p>On 18 October, she and the rest of Sanbaka received updated models.</p>
+                <p>On 4 December, she unveiled her dress outfit in commemoration of her reaching 50,000 subscribers.</p>
+                <p>On 8 December, Lize reached 200,000 subscribers on her YouTube channel.</p>
+            </ul>
+                </div>
+                <div class="history-section" id="history-section-2">
+                <p><strong>2020:</strong></p>
+                <ul>
+                <p>On 22 January, Lize unveiled her official 3D model via YouTube livestream.</p>
+                <p>On 25 February, Lize reached 250,000 subscribers on her YouTube channel.</p>
+                <p>On 5 April, Lize begins a regular radio show with Suzuhara Lulu, にじさんじ presents リゼるる Listen, on national broadcast produced by A&G every Sunday on 8 PM JST.</p>
+                <p>On 10 May, Lize reached 300,000 subscribers on her YouTube channel.</p>
+                <p>On 19 May Lize begins a regular Niconico Namahousou with seiyuu Hana Tamegai, who is known for voicing Risa Matoba from Idolm@ster Cinderella Girls, titled 集貝はなとリゼ・ヘルエスタの『皇女にタメでもいいですか！？』 or shortened ためリゼ. The first stream aired on 22 May 2020.</p>
+                <p> On 25 May Lize released her solo image song, ハッピーエンドをはじめから (Happy Endo wo Hajime Kara--Beginning A Happy End), composed by TOKOTOKO (NishizawasanP).</p>
+                <p>On 2 August, Lize reached 350,000 subscribers on her YouTube channel.</p>
+                <p>On 4 November, Lize reached 400,000 subscribers on her YouTube channel.</p>
+</ul>
+                </div>
+                <div class="history-section" id="history-section-3">
+                <p><strong>2021:</strong></p>
+                <ul>
+                <p>On 1 February, Lize reached 450,000 subscribers on her YouTube channel.</p>
+                <p>On 16 April, Lize reached 500,000 subscribers on her YouTube channel, making her the 7th NIJISANJI Liver to reach this milestone.</p>
+                <p>On 7 August, Lize reached 550,000 subscribers on her YouTube channel.</p>
+                <p>On 9 December, Lize reached 600,000 subscribers on her YouTube channel.</p>
+</ul>
+                </div>
+                <div class="history-section" id="history-section-4">
+                <p><strong>2022:</strong></p>
+                <ul>
+                <p>On 17 May, Lize reached 650,000 subscribers on her YouTube channel.</p>
+                <p>On 29 September, Lize reached 700,000 subscribers on her YouTube channel.</p>
+</ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+function showHistorySection(index) {
+    const sections = document.querySelectorAll('.history-section');
+    sections.forEach((section, i) => {
+        if (i === index) {
+            section.classList.add('active');
+        } else {
+            section.classList.remove('active');
+        }
+    });
+}
+
+        // Check if sections are in view and add 'in-view' class for animation
+        const sections = document.querySelectorAll('.section');
+
+        function checkInView() {
+            const windowHeight = window.innerHeight;
+
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const inView = rect.top < windowHeight && rect.bottom > 0;
+
+                if (inView) {
+                    section.classList.add('in-view');
+                } else {
+                    section.classList.remove('in-view');
+                }
+            });
+        }
+
+        // Run on scroll and initial load
+        window.addEventListener('scroll', checkInView);
+        checkInView();
+    </script>
+    <script>
+const imageSets = [
+    ['https://img2.pic.in.th/pic/Gellery01.png', 'https://img5.pic.in.th/file/secure-sv1/Gellery02.png', 'https://img2.pic.in.th/pic/Gellery03.png', 'https://img5.pic.in.th/file/secure-sv1/Gellery04.png', 'https://img2.pic.in.th/pic/Gellery05.png', 'https://img2.pic.in.th/pic/Gellery06.png', 'https://img5.pic.in.th/file/secure-sv1/Gellery07.png', 'https://img5.pic.in.th/file/secure-sv1/Gellery08.png', 'https://img5.pic.in.th/file/secure-sv1/Gellery09.png'],
+    ['https://img2.pic.in.th/pic/Gellery10.png', 'https://img2.pic.in.th/pic/Gellery11.png', 'https://img5.pic.in.th/file/secure-sv1/Gellery12.png', 'https://img2.pic.in.th/pic/Gellery13.png', 'https://img2.pic.in.th/pic/Gellery14.png', 'https://img5.pic.in.th/file/secure-sv1/Gellery15.png', 'https://img5.pic.in.th/file/secure-sv1/Gellery16.png', 'https://img2.pic.in.th/pic/Gellery17.png', 'https://img5.pic.in.th/file/secure-sv1/Gellery18.webp'],
+    ['https://img5.pic.in.th/file/secure-sv1/Gellery19.png', 'https://img2.pic.in.th/pic/Gellery20.png', 'https://img2.pic.in.th/pic/Gellery21.png', 'https://img5.pic.in.th/file/secure-sv1/Gellery22.png', 'https://img5.pic.in.th/file/secure-sv1/Gellery23.png'],
+];
+
+let currentPage = 0;
+
+function loadImages() {
+    const imageGrid = document.getElementById('imageGrid');
+    imageGrid.innerHTML = '';
+
+    const currentSet = imageSets[currentPage];
+    currentSet.forEach(src => {
+        const link = document.createElement('a');
+        link.href = src; // ลิงก์ไปยังรูปภาพ
+        link.target = '_blank'; // เปิดในแท็บใหม่
+
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = 'Vtuber Image';
+
+        link.appendChild(img);
+        imageGrid.appendChild(link);
+    });
+
+    updateButtonVisibility();
+}
+
+function changePage(direction) {
+    currentPage = (currentPage + direction + imageSets.length) % imageSets.length;
+    loadImages();
+}
+
+function updateButtonVisibility() {
+    const prevButton = document.getElementById('prevButton');
+    const nextButton = document.getElementById('nextButton');
+
+    // Hide Previous button if on the first set
+    prevButton.classList.toggle('hidden', currentPage === 0);
+
+    // Hide Next button if on the last set
+    nextButton.classList.toggle('hidden', currentPage === imageSets.length - 1);
+}
+
+// เริ่มต้นโหลดชุดรูปภาพแรก
+loadImages();
+    </script>
+</body>
+</html>
